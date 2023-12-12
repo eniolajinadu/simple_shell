@@ -151,14 +151,14 @@ int check_vars(r_var **h, char *in, char *st, data_shell *data);
 char *replaced_input(r_var **head, char *input, char *new_input, int nlen);
 char *rep_var(char *input, data_shell *datash);
 
-/* line.c */
+/* get_line.c */
 void bring_line(char **lineptr, size_t *n, char *buffer, size_t j);
 ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
 
-/* exec_line.c */
+/* execute_line.c */
 int exec_line(data_shell *datash);
 
-/* cmd_exec.c */
+/* cmd_execute.c */
 int is_cdir(char *path, int *i);
 char *_which(char *cmd, char **_environ);
 int is_executable(data_shell *datash);
@@ -184,10 +184,10 @@ void cd_to_home(data_shell *datash);
 /* cd_shell.c */
 int cd_shell(data_shell *datash);
 
-/* builtin.c */
+/* get_builtin.c */
 int (*get_builtin(char *cmd))(data_shell *datash);
 
-/* exit.c */
+/* exit_shell.c */
 int exit_shell(data_shell *datash);
 
 /* stdlib.c */
@@ -209,11 +209,11 @@ char *error_permission(char **args);
 char *error_path_126(data_shell *datash);
 
 
-/* error.c */
+/* get_error.c */
 int get_error(data_shell *datash, int eval);
 
-/* sigint.c */
-void get_sigint(int sig);
+/* get_c_int.c */
+void get_c_int(int sig);
 
 /* auxiliaryhelp_1.c */
 void aux_help_env(void);
@@ -227,7 +227,7 @@ void aux_help(void);
 void aux_help_alias(void);
 void aux_help_cd(void);
 
-/* help.c */
+/* get_help.c */
 int get_help(data_shell *datash);
 
 #endif
