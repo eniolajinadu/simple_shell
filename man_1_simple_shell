@@ -1,0 +1,49 @@
+.\" Manpage for hsh (Simple Shell)
+.TH HSH 12 "December 2023" "ALX Africa" "SHELL - Simple Shell man page"
+
+.SH NAME
+hsh - Simple UNIX command interpreter
+
+.SH SYNOPSIS
+hsh [\fIfilename\fR]
+
+.SH COPYRIGHT
+hsh is Copyright (C) 2023 Abdulrasaq Eniola Jinadu
+
+.SH DESCRIPTION
+hsh functions as a minimal shell interpreter, capable of executing commands sourced from either standard input or a specified file.
+
+.SH ARGUMENTS
+If there are leftover arguments post-option handling, the initial argument is treated as the filename housing shell commands. hsh proceeds to execute commands from this file and then exits. The shell's exit status mirrors that of the last executed command within the script. If no commands are executed, the exit status defaults to 0. The script's location is sought within directories listed in PATH.
+
+.SH INVOCATION
+hsh initiates with the terminal as its standard input and is versatile in supporting interactive and non-interactive modes. In the interactive mode, it prompts (^_^) users for command input. The command-line argument is interpreted as the initial argument in all modes.
+
+.SH DEFINITIONS
+- \fIblank\fR: A space or tab.
+- \fIword\fR: A sequence of characters considered as a single unit by the shell. Also known as a token.
+- \fIname\fR: A word consisting only of alphanumeric characters and underscores, beginning with an alphabetic character or an underscore.
+
+.SH Command Execution
+hsh hunts for commands within the PATH and runs them in an isolated environment. If the command isn't located, it returns an error status.
+
+.SH Environment
+hsh duplicates the environment of its parent process, ensuring that executed commands inherit this specific environment setup.
+
+.SH Exit Status
+The exit status of a executed command corresponds to the value returned by the system call waitpid or its equivalent function. A zero status signifies success, while a non-zero status indicates failure.
+
+.SH BUILTINS
+hsh supports the following builtin commands:
+.BR env " - Print the current environment"
+.BR setenv " [Variable] [Value] - Create or modify an environment variable"
+.BR unsetenv " [Variable] - Remove an environmental variable"
+.BR exit " [Status] - Exit the shell"
+.BR cd " [Directory] - Change the current directory"
+.BR help " - Print help message for builtin commands"
+
+.SH SEE ALSO
+access(2), chdir(2), execve(2), _exit(2), exit(3), fork(2), free(3), isatty(3), getcwd(3), malloc(3), open(2), read(2), sh(1), signal(2), stat(2), wait(2), write(2)
+
+.SH AUTHORS
+Abdulrasaq Jinadu
